@@ -1,0 +1,90 @@
+\doxysection{gui.\+py File Reference}
+\hypertarget{gui_8py}{}\label{gui_8py}\index{gui.py@{gui.py}}
+
+
+Minimal GUI for selecting and playing a video (no detection).  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gui_8py_aea0bdc47c23c501276d822f001aed0ac}{gui.\+upload\+\_\+video}} ()
+\begin{DoxyCompactList}\small\item\em Triggered when the "{}\+Upload \& Play Video"{} button is clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gui_8py_a0d018849665fe7c4f792bf9478f11182}\label{gui_8py_a0d018849665fe7c4f792bf9478f11182} 
+{\bfseries gui.\+window} = tk.\+Tk()
+\item 
+\Hypertarget{gui_8py_a4010732a24471cd1b71667b375b9a8a1}\label{gui_8py_a4010732a24471cd1b71667b375b9a8a1} 
+{\bfseries gui.\+bg}
+\item 
+\Hypertarget{gui_8py_a5ff0c008ca35654eaf1dc11af3cc726c}\label{gui_8py_a5ff0c008ca35654eaf1dc11af3cc726c} 
+int {\bfseries gui.\+win\+\_\+width} = 480
+\item 
+\Hypertarget{gui_8py_a6e51f6ab8afc80ccfaff9aafcabb4905}\label{gui_8py_a6e51f6ab8afc80ccfaff9aafcabb4905} 
+int {\bfseries gui.\+win\+\_\+height} = 220
+\item 
+\Hypertarget{gui_8py_a1b741665b9a7b957c02345cf05ecd6ca}\label{gui_8py_a1b741665b9a7b957c02345cf05ecd6ca} 
+{\bfseries gui.\+screen\+\_\+width} = window.\+winfo\+\_\+screenwidth()
+\item 
+\Hypertarget{gui_8py_a96ba6ef7b47d9004a796ed69caaa710c}\label{gui_8py_a96ba6ef7b47d9004a796ed69caaa710c} 
+{\bfseries gui.\+screen\+\_\+height} = window.\+winfo\+\_\+screenheight()
+\item 
+\Hypertarget{gui_8py_a66226e549c3580111deab6cf12b8692a}\label{gui_8py_a66226e549c3580111deab6cf12b8692a} 
+tuple {\bfseries gui.\+x} = (screen\+\_\+width // 2) -\/ (win\+\_\+width // 2)
+\item 
+\Hypertarget{gui_8py_a08f8d91ef6d4a48c1f58349992ae83f8}\label{gui_8py_a08f8d91ef6d4a48c1f58349992ae83f8} 
+tuple {\bfseries gui.\+y} = (screen\+\_\+height // 2) -\/ (win\+\_\+height // 2)
+\item 
+\mbox{\hyperlink{gui_8py_abdbc28efb9a49cb68c8991fbf79969d1}{gui.\+upload\+\_\+btn}}
+\item 
+\Hypertarget{gui_8py_a34c2d4c78bf453e3a315de3ffbd7cc12}\label{gui_8py_a34c2d4c78bf453e3a315de3ffbd7cc12} 
+{\bfseries gui.\+expand}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Minimal GUI for selecting and playing a video (no detection). 
+
+\begin{DoxyAuthor}{Author}
+Adam Pinkos 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/7/25 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gui_8py_aea0bdc47c23c501276d822f001aed0ac}\index{gui.py@{gui.py}!upload\_video@{upload\_video}}
+\index{upload\_video@{upload\_video}!gui.py@{gui.py}}
+\doxysubsubsection{\texorpdfstring{upload\_video()}{upload\_video()}}
+{\footnotesize\ttfamily \label{gui_8py_aea0bdc47c23c501276d822f001aed0ac} 
+gui.\+upload\+\_\+video (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Triggered when the "{}\+Upload \& Play Video"{} button is clicked. 
+
+Prompts the user to select a video file and plays it back at normal speed. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{gui_8py_abdbc28efb9a49cb68c8991fbf79969d1}\index{gui.py@{gui.py}!upload\_btn@{upload\_btn}}
+\index{upload\_btn@{upload\_btn}!gui.py@{gui.py}}
+\doxysubsubsection{\texorpdfstring{upload\_btn}{upload\_btn}}
+{\footnotesize\ttfamily \label{gui_8py_abdbc28efb9a49cb68c8991fbf79969d1} 
+gui.\+upload\+\_\+btn}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ tk.Button(}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ window,}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ text=\textcolor{stringliteral}{"{}Upload\ \&\ Play\ Video"{}},}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ command=upload\_video,}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ font=(\textcolor{stringliteral}{"{}Helvetica"{}},\ 14,\ \textcolor{stringliteral}{"{}bold"{}}),}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ bg=\textcolor{stringliteral}{"{}\#444444"{}},\ fg=\textcolor{stringliteral}{"{}white"{}},}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ activebackground=\textcolor{stringliteral}{"{}\#555555"{}},\ activeforeground=\textcolor{stringliteral}{"{}white"{}},}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ relief=\textcolor{stringliteral}{"{}flat"{}},\ padx=12,\ pady=8}
+\DoxyCodeLine{00009\ \ \ \ \ )}
+
+\end{DoxyCode}
