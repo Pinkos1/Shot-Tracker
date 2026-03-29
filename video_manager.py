@@ -38,3 +38,50 @@ class VideoManager:
         self.current_frame = None
         return True
     
+
+    def read_frame(self):
+        if self.cap is None:
+            return None
+
+        ret, frame = self.cap.read()
+        if not ret:
+            return None
+
+        self.current_frame = frame
+        return frame
+
+    def play(self):
+        if self.cap is not None:
+            self.is_playing = True
+            self.is_paused = False
+
+    def pause(self):
+        if self.cap is not None:
+            self.is_paused = True
+            self.is_playing = False
+
+    def stop(self):
+        if self.cap is not None:
+            self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        self.is_playing = False
+        self.is_paused = False
+        self.current_frame = None
+
+    def restart(self):
+        if self.cap is not None:
+            self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        self.is_playing = True
+        self.is_paused = False
+        self.current_frame = None
+
+    def get_delay(self):
+        return max(1, int(1000 / self.fps))
+
+    def release(self):
+        if self.cap is not None:
+            self.cap.release()
+            self.cap = None
+
+        self.is_playing = False
+        self.is_paused = False
+        self.current_frame = None
