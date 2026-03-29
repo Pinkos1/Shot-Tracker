@@ -269,6 +269,9 @@ class VideoPlayerGUI:
 
         return processed
     
+
+
+    
     def show_frame(self, frame):
         display_width = self.video_label.winfo_width()
         display_height = self.video_label.winfo_height()
@@ -289,9 +292,30 @@ class VideoPlayerGUI:
         resized_frame = cv2.resize(frame, (new_width, new_height))
 
         image = Image.fromarray(resized_frame)
-        self.photo = ImageTk.PhotoImage(image=image)
+        self.photo = ImageTk.PhotoImage(image = image)
 
-        self.video_label.config(image=self.photo)
+        self.video_label.config(image = self.photo)
+
+
+
+    def clear_video_display(self):
+        self.video_label.config(image="", bg="black")
+        self.photo = None
+
+    def update_loop(self):
+        if self.video_manager.is_playing:
+            frame = self.video_manager.read_frame()
+
+            if frame is not None:
+                self.is_processing_frame = True
+                processed_frame = self.process_frame(frame)
+                self.show_frame(processed_frame)
+                self.is_processing_frame = False
+            else:
+                self.video_manager.stop()
+
+        delay = self.video_manager.get_delay()
+        self.root.after(delay, self.update_loop)
 
 
 
