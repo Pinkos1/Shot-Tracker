@@ -12,5 +12,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 
+from video_manager import VideoManager
+from person_detector import PersonDetector
+from rim_detector import RimDetector
 
 class VideoPlayerGUI:
