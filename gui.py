@@ -230,6 +230,46 @@ class VideoPlayerGUI:
                     (0, 0, 255),
                     2
                 )
+        if self.detect_people_enabled:
+            try:
+                people = self.person_detector.detect_and_track(raw_frame)
+                people_count = len(people)
+                processed = self.person_detector.draw_people(processed, people)
+            except Exception as e:
+                print("Player detection error:", e)
+                cv2.putText(
+                    processed,
+                    "Player Detection Error",
+                    (20, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8,
+                    (0, 0, 255),
+                    2
+                )
+
+        cv2.putText(
+            processed,
+            f"Players: {people_count}",
+            (20, 40),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.9,
+            (255, 0, 0),
+            2
+        )
+
+        cv2.putText(
+            processed,
+            f"Rims: {rim_count}",
+            (20, 80),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.9,
+            (0, 165, 255),
+            2
+        )
+
+        return processed
+    
+
 
 
     
