@@ -43,3 +43,22 @@ class PersonDetector:
                     })
 
         return people
+
+    def draw_people(self, frame, people):
+        for person in people:
+            x1, y1, x2, y2 = person["box"]
+            pid = person["id"]
+
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+            cv2.putText(
+                frame,
+                f"ID {pid}",
+                (x1, max(25, y1 - 10)),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (0, 255, 0),
+                2
+            )
+
+        return frame
