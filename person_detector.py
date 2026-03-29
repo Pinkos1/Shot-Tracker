@@ -14,7 +14,7 @@ class PersonDetector:
         self.model = YOLO("yolov8n.pt")
 
     def detect_and_track(self, frame):
-        results = self.model.track(frame, persist=True, verbose=False)
+        results = self.model.track(frame, persist = True, verbose = False)
 
         people = []
 
@@ -43,6 +43,8 @@ class PersonDetector:
                     })
 
         return people
+    
+    
 
     def draw_people(self, frame, people):
         for person in people:
