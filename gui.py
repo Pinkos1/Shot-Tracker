@@ -17,3 +17,7 @@ from person_detector import PersonDetector
 from rim_detector import RimDetector
 
 class VideoPlayerGUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Basketball Shot Tracker - Video Player")
+        self.root.geometry("1100x750")
