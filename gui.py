@@ -269,6 +269,29 @@ class VideoPlayerGUI:
 
         return processed
     
+    def show_frame(self, frame):
+        display_width = self.video_label.winfo_width()
+        display_height = self.video_label.winfo_height()
+
+        if display_width < 10:
+            display_width = 960
+        if display_height < 10:
+            display_height = 540
+
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        frame_height, frame_width, _ = frame.shape
+        scale = min(display_width / frame_width, display_height / frame_height)
+
+        new_width = int(frame_width * scale)
+        new_height = int(frame_height * scale)
+
+        resized_frame = cv2.resize(frame, (new_width, new_height))
+
+        image = Image.fromarray(resized_frame)
+        self.photo = ImageTk.PhotoImage(image=image)
+
+        self.video_label.config(image=self.photo)
 
 
 
