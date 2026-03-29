@@ -298,8 +298,9 @@ class VideoPlayerGUI:
 
 
 
+
     def clear_video_display(self):
-        self.video_label.config(image="", bg="black")
+        self.video_label.config(image = "", bg = "black")
         self.photo = None
 
     def update_loop(self):
