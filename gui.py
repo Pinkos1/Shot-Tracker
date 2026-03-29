@@ -19,7 +19,7 @@ from rim_detector import RimDetector
 class VideoPlayerGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Basketball Shot Tracker - Video Player")
+        self.root.title("Basketball Shot Tracker")
         self.root.geometry("1100x750")
 
 
@@ -39,13 +39,13 @@ class VideoPlayerGUI:
 
     def create_widgets(self):
         top_frame = tk.Frame(self.root)
-        top_frame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        top_frame.pack(side = tk.TOP, fill = tk.X, padx = 10, pady = 10)
 
         self.open_button = tk.Button(
             top_frame,
-            text="Open Video",
-            command=self.open_video,
-            width=12
+            text = "Open Video",
+            command = self.open_video,
+            width = 12
         )
 
     
