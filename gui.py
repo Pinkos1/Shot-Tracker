@@ -155,4 +155,62 @@ class VideoPlayerGUI:
         self.video_manager.pause()
 
 
+
+    def play_video(self):
+        if self.video_manager.cap is None:
+            messagebox.showwarning("No Video", "Please choose a video first.")
+            return
+
+        self.video_manager.play()
+
+
+    def pause_video(self):
+        self.video_manager.pause()
+
+
+    def stop_video(self):
+        self.video_manager.stop()
+        self.clear_video_display()
+
+
+    def restart_video(self):
+        if self.video_manager.cap is None:
+            messagebox.showwarning("No Video", "Please choose a video first.")
+            return
+
+        self.video_manager.restart()
+
+
+    def toggle_people_detection(self):
+        if self.is_processing_frame:
+            return
+
+        self.detect_people_enabled = not self.detect_people_enabled
+
+        if self.detect_people_enabled:
+            self.people_button.config(text = "Players: ON")
+        else:
+            self.people_button.config(text = "Players: OFF")
+
+
+    def toggle_rim_detection(self):
+        if self.is_processing_frame:
+            return
+
+        self.detect_rims_enabled = not self.detect_rims_enabled
+
+        if self.detect_rims_enabled:
+            self.rim_button.config(text = "Rim: ON")
+        else:
+            self.rim_button.config(text = "Rim: OFF")
+
+
+    def process_frame(self, frame):
+        raw_frame = frame.copy()
+        processed = frame.copy()
+
+        people_count = 0
+        rim_count = 0
+
+
     
