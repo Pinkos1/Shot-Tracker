@@ -125,4 +125,34 @@ class VideoPlayerGUI:
         self.video_label.pack(fill=tk.BOTH, expand = True, padx = 10, pady = 10)
 
 
+
+
+    def open_video(self):
+        file_path = filedialog.askopenfilename(
+            title = "Select a Video File",
+            filetypes = [
+                ("Video Files", "*.mp4 *.avi *.mkv *.mov *.wmv"),
+                ("All Files", "*.*")
+            ]
+        )
+
+        if not file_path:
+            return
+
+        success = self.video_manager.load_video(file_path)
+
+        if not success:
+            messagebox.showerror("Error", "Could not open the video.")
+            return
+
+        self.label.config(text = os.path.basename(file_path))
+
+        first_frame = self.video_manager.read_frame()
+        if first_frame is not None:
+            processed_frame = self.process_frame(first_frame)
+            self.show_frame(processed_frame)
+
+        self.video_manager.pause()
+
+
     
