@@ -213,4 +213,23 @@ class VideoPlayerGUI:
         rim_count = 0
 
 
+        if self.detect_rims_enabled:
+            try:
+                rims = self.rim_detector.detect_rims(raw_frame)
+                rim_count = len(rims)
+                processed = self.rim_detector.draw_rims(processed, rims)
+                print("Rims found:", rim_count)
+            except Exception as e:
+                print("Rim detection error:", e)
+                cv2.putText(
+                    processed,
+                    "Rim Detection Error",
+                    (20, 80),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8,
+                    (0, 0, 255),
+                    2
+                )
+
+
     
