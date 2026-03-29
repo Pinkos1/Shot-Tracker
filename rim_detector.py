@@ -25,3 +25,27 @@ class RimDetector:
             iou = 0.30,
             verbose = False
         )
+
+
+        best_rim = None
+        best_conf = 0.0
+
+        for result in results:
+            if result.boxes is None:
+                continue
+
+            for box in result.boxes:
+                conf = float(box.conf[0].item())
+                x1, y1, x2, y2 = box.xyxy[0].tolist()
+
+                if conf > best_conf:
+                    best_conf = conf
+                    best_rim = {
+                        "box": (int(x1), int(y1), int(x2), int(y2)),
+                        "conf": conf
+                    }
+
+        if best_rim is not None:
+            return [best_rim]
+
+        return []
